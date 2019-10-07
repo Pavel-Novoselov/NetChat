@@ -47,7 +47,7 @@ public class ServerChat {
             o.sendMsg(msg);
         }
     }
-
+//приватная переписка
     public void privatMsg(String nickname, String msg){
         for (ClientsHandler o: clients) {
             String nick = o.getNick();
@@ -56,7 +56,7 @@ public class ServerChat {
             }
         }
     }
-
+//проверка уникален ли НИК
     public boolean isNickUnic (String nickname){
         for (ClientsHandler o: clients) {
             String nick = o.getNick();

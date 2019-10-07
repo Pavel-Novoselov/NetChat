@@ -28,7 +28,7 @@ public class AuthService {
 
         return null;
     }
-
+//запись в базу данных строчки с новым пользователем
     public static void addNewUser(String nick, String login, String password) throws SQLException {
         String sql = String.format("INSERT INTO main (login, password, nickname) VALUES ('%s', '%s', '%s');",
                 login, password, nick);
