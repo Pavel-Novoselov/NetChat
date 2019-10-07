@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.PasswordField?>
+
+<?import javafx.scene.control.Label?>
+<VBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="client.simple.Controller">
+    <VBox fx:id="firstPanel">
+        <Label fx:id="lb" text="Форма регистрации"/>
+        <Label fx:id="lb1" text="Ник-нейм"/>
+        <TextField VBox.vgrow="ALWAYS" promptText="Придумайте Ник" fx:id="nickFieldReg"/>
+        <Label fx:id="lb2" text="Логин"/>
+        <TextField VBox.vgrow="ALWAYS" promptText="Придумайте Логин" fx:id="loginFieldReg"/>
+        <Label fx:id="lb3" text="Пароль"/>
+        <PasswordField promptText="Придумайте пароль" fx:id="passwordFieldReg" onAction="#tryToReg"/>
+        <Button text="Зарегистрироваться" onAction="#tryToReg" alignment="CENTER"/>
+        <Button text="Я уже зарегистрирован" onAction="#goToAuth" alignment="CENTER"/>
+    </VBox>
+
+    <VBox fx:id="upperPanel" managed="false" visible="false">
+        <Label fx:id="lb4" text="Форма авторизации"/>
+        <Label fx:id="lb5" text="Логин"/>
+        <TextField VBox.vgrow="ALWAYS" promptText="Логин..." fx:id="loginField"/>
+        <Label fx:id="lb6" text="Пароль"/>
+        <PasswordField promptText="Пароль..." fx:id="passwordField" onAction="#tryToAuth"/>
+        <Button text="Войти в чат" onAction="#tryToAuth"/>
+    </VBox>
+
+    <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS" />
+
+    <HBox fx:id="bottomPanel" managed="false" visible="false">
+        <TextField fx:id="textField" onAction="#sendMsg" promptText="Введите текст" HBox.hgrow="ALWAYS" />
+        <Button fx:id="btn1" onAction="#sendMsg" text="Send" />
+    </HBox>
+</VBox>

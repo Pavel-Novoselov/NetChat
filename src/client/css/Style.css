@@ -1,0 +1,36 @@
+ {
+    -fx-font: 20px "Serif";
+    -fx-background-color: cyan;
+}
+
+
+#btn1 {
+
+    -fx-font: 18px "Sans-Serif";
+     -fx-text-fill: white;
+     -fx-font-family: "Arial Narrow";
+     -fx-font-weight: bold;
+     -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    }
+
+
+#btn1: hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#textArea {
+    -fx-font: 20px "Serif";
+    -fx-padding: 10;
+    -fx-background-color: #CCFF99;
+
+}
+
+#textField {
+
+    -fx-font: 20px "Serif";
+    -fx-padding: 7;
+    -fx-background-color: red;
+}
+
+
