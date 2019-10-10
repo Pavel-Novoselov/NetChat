@@ -18,7 +18,7 @@ public class Main extends Application {
         primaryStage.setTitle("Chat 2k19");
         c = loader.getController();
 
-        Scene scene = new Scene(root, 350, 450);
+        Scene scene = new Scene(root, 350, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
 

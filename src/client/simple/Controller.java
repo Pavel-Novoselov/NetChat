@@ -170,7 +170,7 @@ public class Controller{
             e.printStackTrace();
         }
     }
-
+//отсылаем форму регистрации
     public void tryToReg(ActionEvent actionEvent) {
         if ((socket == null) || socket.isClosed()) {
             connect();

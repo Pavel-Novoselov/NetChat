@@ -35,7 +35,6 @@ public class ClientsHandler {
                             if (str.startsWith("/auth")) {
                                 String[] tokens = str.split(" ");
                                 String currentNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
-
                                 if (currentNick == null)
                                     sendMsg("неверный логин/пароль");
                                 else if (!serv.isNickUnic(currentNick))
