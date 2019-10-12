@@ -16,10 +16,8 @@ public class ServerChat {
 
         try{
             AuthService.connect();
-
             server = new ServerSocket(8189);
             System.out.println("Server started");
-
             while (true){
                 socket = server.accept();
                 System.out.println("Client connected");
@@ -38,12 +36,13 @@ public class ServerChat {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            AuthService.disconnect();
         }
-        AuthService.disconnect();
     }
 
-    public void broadcastMsg(String msg){
+    public void broadcastMsg(ClientsHandler from, String msg){
         for (ClientsHandler o: clients) {
+            if (!from.checkBlackList(o.getNick()))
             o.sendMsg(msg);
         }
     }
@@ -59,20 +58,33 @@ public class ServerChat {
 //проверка уникален ли НИК
     public boolean isNickUnic (String nickname){
         for (ClientsHandler o: clients) {
-            String nick = o.getNick();
-            if(nick.equals(nickname)){
+          //  String nick = o.getNick();
+            if(o.getNick().equals(nickname)){
                return false;
             }
         }
         return true;
     }
 
+    public void broadcastClientsList(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("/clientslist");
+        for (ClientsHandler o: clients) {
+            sb.append(o.getNick()+" ");
+        }
+        String out = sb.toString();
+        for (ClientsHandler o: clients) {
+            o.sendMsg(out);
+        }
+    }
+
     public void subscribe(ClientsHandler client){
         clients.add(client);
+       broadcastClientsList();
     }
 
     public void unsubscribe(ClientsHandler client){
         clients.remove(client);
+        broadcastClientsList();
     }
-
 }

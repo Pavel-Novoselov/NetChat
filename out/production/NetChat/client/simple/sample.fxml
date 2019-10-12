@@ -19,7 +19,6 @@
         <Button text="Зарегистрироваться" onAction="#tryToReg" alignment="CENTER"/>
         <Button text="Я уже зарегистрирован" onAction="#goToAuth" alignment="CENTER"/>
     </VBox>
-
     <VBox fx:id="upperPanel" managed="false" visible="false">
         <Label fx:id="lb4" text="Форма авторизации"/>
         <Label fx:id="lb5" text="Логин"/>

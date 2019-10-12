@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ClientsHandler {
@@ -13,6 +15,7 @@ public class ClientsHandler {
     private DataOutputStream out;
     private ServerChat serv;
     private String nick;
+    private List<String> blackList;
 
     public ClientsHandler(ServerChat serv, Socket socket) {
         try {
@@ -20,6 +23,7 @@ public class ClientsHandler {
             this.serv = serv;
             this.in = new DataInputStream(socket.getInputStream());
             this.out = new DataOutputStream(socket.getOutputStream());
+            this.blackList = new ArrayList<>();
 
             new Thread(new Runnable() {
                 @Override
@@ -27,38 +31,49 @@ public class ClientsHandler {
                     try {
                         while (true) {
                             String str = in.readUTF();
-                            if (str.startsWith("/reg")){
-                                String[] regTokens = str.split(" ");
-                                AuthService.addNewUser(regTokens[1], regTokens[2], regTokens[3]);
-                                sendMsg("/regok");
-                            }
-                            if (str.startsWith("/auth")) {
-                                String[] tokens = str.split(" ");
-                                String currentNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
-                                if (currentNick == null)
-                                    sendMsg("неверный логин/пароль");
-                                else if (!serv.isNickUnic(currentNick))
-                                    sendMsg("пользователь с такимл логином уже существует");
-                                    else {
-                                    sendMsg("/authok");
-                                    nick = currentNick;
-                                    serv.subscribe(ClientsHandler.this);
-                                    System.out.println("Auth OK ");
-                                    break;
+                                if (str.startsWith("/reg")) {
+                                    String[] regTokens = str.split(" ");
+                                    AuthService.addNewUser(regTokens[1], regTokens[2], regTokens[3]);
+                                    sendMsg("/regok");
                                 }
-                            }
+                                if (str.startsWith("/auth")) {
+                                    String[] tokens = str.split(" ");
+                                    String currentNick = AuthService.getNickByLoginAndPass(tokens[1], tokens[2]);
+                                    if (currentNick == null)
+                                        sendMsg("неверный логин/пароль");
+                                    else if (!serv.isNickUnic(currentNick))
+                                        sendMsg("пользователь с такимл логином уже существует");
+                                    else {
+                                        sendMsg("/authok");
+                                        nick = currentNick;
+                                        serv.subscribe(ClientsHandler.this);
+                                        System.out.println("Auth "+nick+" is OK");
+                                        //загрузка черного списка
+                                        blackList = AuthService.blackListFromDB (ClientsHandler.this);
+                                        break;
+                                    }
+                                }
                         }
                         while (true){
                             String str = in.readUTF();
-                            if (str.equalsIgnoreCase("/end")) {
-                                sendMsg("/clientClose");
-                                break;
-                            }
-                            if (str.startsWith("/w")){
-                                String[] tokens = str.split(" ");
-                                serv.privatMsg(tokens[1], "Privat message from "+ClientsHandler.this.getNick()+": "+tokens[2]);
+                            if (str.startsWith("/")) {
+                                if (str.startsWith("/toBlackList")){
+                                    String[] tokens = str.split(" ");
+                                    blackList.add(tokens[1]);
+                                    AuthService.addToBlackList(getNick(), tokens[1]);
+                                    sendMsg("You've added "+tokens[1]+" into Black List");
+                                }
+                                if (str.equalsIgnoreCase("/end")) {
+                                    sendMsg("/clientClose");
+                                    break;
+                                }
+                                if (str.startsWith("/w")){
+                                     String[] tokens = str.split(" ", 3);
+                                     serv.privatMsg(tokens[1], "Privat message from "+getNick()+": "+tokens[2]);
+                                     serv.privatMsg(getNick(), "Private message to "+tokens[1]+": "+tokens[2]);
+                                }
                             } else
-                                serv.broadcastMsg(nick + ": " + str);
+                                serv.broadcastMsg(ClientsHandler.this,getNick() + ": " + str);
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -99,5 +114,9 @@ public class ClientsHandler {
 
     public String getNick() {
         return nick;
+    }
+
+    public boolean checkBlackList(String nick){
+        return blackList.contains(nick);
     }
 }
