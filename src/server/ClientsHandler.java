@@ -42,7 +42,7 @@ public class ClientsHandler {
                                     if (currentNick == null)
                                         sendMsg("неверный логин/пароль");
                                     else if (!serv.isNickUnic(currentNick))
-                                        sendMsg("пользователь с такимл логином уже существует");
+                                        sendMsg("пользователь с таким логином уже существует");
                                     else {
                                         sendMsg("/authok");
                                         nick = currentNick;

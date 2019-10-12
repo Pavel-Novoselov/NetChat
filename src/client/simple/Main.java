@@ -1,10 +1,13 @@
 package client.simple;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
@@ -18,7 +21,7 @@ public class Main extends Application {
         primaryStage.setTitle("Chat 2k19");
         c = loader.getController();
 
-        Scene scene = new Scene(root, 350, 400);
+        Scene scene = new Scene(root, 550, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
 

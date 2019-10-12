@@ -23,7 +23,7 @@ public class ServerChat {
                 System.out.println("Client connected");
                 new ClientsHandler(this, socket);
             }
-        }catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         } finally {
             try {
@@ -68,7 +68,7 @@ public class ServerChat {
 
     public void broadcastClientsList(){
         StringBuilder sb = new StringBuilder();
-        sb.append("/clientslist");
+        sb.append("/clientslist ");
         for (ClientsHandler o: clients) {
             sb.append(o.getNick()+" ");
         }
