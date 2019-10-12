@@ -49,7 +49,7 @@ public class ClientsHandler {
                                         serv.subscribe(ClientsHandler.this);
                                         System.out.println("Auth "+nick+" is OK");
                                         //загрузка черного списка
-                                        blackList = AuthService.blackListFromDB (ClientsHandler.this);
+                                        ClientsHandler.this.blackList = AuthService.blackListFromDB (ClientsHandler.this);
                                         break;
                                     }
                                 }

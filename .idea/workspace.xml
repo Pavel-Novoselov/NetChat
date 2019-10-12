@@ -4,17 +4,12 @@
     <list default="true" id="f2d5a64f-963d-4abe-9cad-7358b0498f79" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NetChat/client/simple/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/client/simple/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NetChat/client/simple/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/client/simple/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/AuthService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/ClientsHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/ClientsHandler$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/ClientsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/ClientsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/ServerChat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/ServerChat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/ServerStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/ServerStart.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/AuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ClientsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientsHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ServerStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerStart.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -80,7 +80,7 @@ public class ServerChat {
 
     public void subscribe(ClientsHandler client){
         clients.add(client);
-       broadcastClientsList();
+        broadcastClientsList();
     }
 
     public void unsubscribe(ClientsHandler client){
