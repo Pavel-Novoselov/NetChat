@@ -1,12 +1,15 @@
 package client.simple;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.awt.event.MouseAdapter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -62,6 +65,10 @@ public class Controller{
     @FXML
     Label lb, lb1, lb2, lb3, lb4, lb5, lb6;
 
+    @FXML
+    ListView<String> clientsList;
+
+
     private void setAuthrizedAndReg(boolean isAuthorized, boolean isRegistered) {
         this.isAuthorized = isAuthorized;
         this.isRegistered = isRegistered;
@@ -108,16 +115,28 @@ public class Controller{
                                     setAuthrizedAndReg(false, true);
                             }
                                     else {
-                                        textArea.appendText(str + "\n");
+                                        textArea.appendText(str + "++\n");
                                     }
                         }
 
                         while (true) {
                             String str = in.readUTF();
-                            if (str.equalsIgnoreCase("/clientClose")) {
-                                break;
-                            }
-                            textArea.appendText(str + "\n");
+                            if (str.startsWith("/")){
+                                if (str.startsWith("/clientslist")) {
+                                    String[] tokens = str.split(" ");
+                                    Platform.runLater(() ->{
+                                        clientsList.getItems().clear();
+                                        for (int i = 1; i < tokens.length; i++) {
+                                            clientsList.getItems().add(tokens[i]);
+                                        }
+
+                                    });
+                                }
+                                if (str.equalsIgnoreCase("/clientClose")) {
+                                    break;
+                                }
+                            } else
+                                textArea.appendText(str + "\n");
                         }
 
                     } catch (IOException e) {
@@ -193,5 +212,11 @@ public class Controller{
         upperPanel.setManaged(true);
         bottomPanel.setVisible(false);
         bottomPanel.setManaged(false);
+    }
+
+    public void selectClient (MouseEvent mouseEvent){
+        if(mouseEvent.getClickCount()==2){
+ //           MiniStage ms = new MiniStage(clientsList.getSelectionModel().getSelectedItems(), out, textArea);
+        }
     }
 }
