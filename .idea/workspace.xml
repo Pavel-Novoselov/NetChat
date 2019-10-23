@@ -4,19 +4,16 @@
     <list default="true" id="f2d5a64f-963d-4abe-9cad-7358b0498f79" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NetChat/client/simple/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/client/simple/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NetChat/client/simple/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/client/simple/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NetChat/client/simple/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/client/simple/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NetChat/client/simple/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/client/simple/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NetChat/META-INF/NetChat.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/AuthService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/ClientsHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/ClientsHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/ClientsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/ClientsHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/ServerChat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/ServerChat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/simple/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/simple/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/simple/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/simple/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/simple/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/simple/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NetChat/server/ServerStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NetChat/server/ServerStart.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/AuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ClientsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientsHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ServerStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerStart.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +39,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../GeekBrain/Java_1/2k18SummerChat" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../GeekBrain/Java_2/16102019" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -92,6 +91,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerStart (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server.ServerStart" />
+      <module name="NetChat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.ServerStart" />
       <module name="NetChat" />
@@ -109,10 +121,12 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.ServerStart" />
       <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Application.ServerStart (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ServerStart (1)" />
         <item itemvalue="Application.ServerStart" />
         <item itemvalue="Application.Main (1)" />
       </list>
@@ -128,8 +142,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570291622901</updated>
+      <workItem from="1571771012509" duration="760000" />
+      <workItem from="1571772895051" duration="4331000" />
+      <workItem from="1571783168292" duration="6406000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
