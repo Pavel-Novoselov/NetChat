@@ -1,9 +1,11 @@
-package server;
+package Server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Vector;
 
 public class ServerChat {
@@ -40,11 +42,12 @@ public class ServerChat {
         }
     }
 
-    public void broadcastMsg(ClientsHandler from, String msg){
+    public void broadcastMsg(ClientsHandler from, String msg) throws SQLException {
         for (ClientsHandler o: clients) {
             if (!from.checkBlackList(o.getNick()))
-            o.sendMsg(msg);
+            o.sendMsg(from.getNick() + ": " + msg);
         }
+        AuthService.saveMsg(LocalDateTime.now(), from.getNick(), msg);
     }
 //приватная переписка
     public void privatMsg(String nickname, String msg){
@@ -65,7 +68,7 @@ public class ServerChat {
         }
         return true;
     }
-
+//рассылка списка онлайн
     public void broadcastClientsList(){
         StringBuilder sb = new StringBuilder();
         sb.append("/clientslist ");

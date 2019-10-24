@@ -1,4 +1,4 @@
-package server;
+package Server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 
 public class ClientsHandler {
@@ -16,6 +17,7 @@ public class ClientsHandler {
     private ServerChat serv;
     private String nick;
     private List<String> blackList;
+    private TreeSet<String> history = new TreeSet<>();
 
     public ClientsHandler(ServerChat serv, Socket socket) {
         try {
@@ -50,6 +52,10 @@ public class ClientsHandler {
                                         System.out.println("Auth "+nick+" is OK");
                                         //загрузка черного списка
                                         ClientsHandler.this.blackList = AuthService.blackListFromDB (ClientsHandler.this);
+                                        //загрузка истории
+                                        history = AuthService.getHistory();
+//                                        cleanHistory();
+                                        sendMsg(history);
                                         break;
                                     }
                                 }
@@ -73,7 +79,7 @@ public class ClientsHandler {
                                      serv.privatMsg(getNick(), "Private message to "+tokens[1]+": "+tokens[2]);
                                 }
                             } else
-                                serv.broadcastMsg(ClientsHandler.this,getNick() + ": " + str);
+                                serv.broadcastMsg(ClientsHandler.this, str);
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -111,6 +117,31 @@ public class ClientsHandler {
             e.printStackTrace();
         }
     }
+//перегружаем метод на отправку списка
+    public void sendMsg(TreeSet<String> msg){
+        try{
+            out.writeUTF("History of chats:");
+            for (String s:
+                 msg) {
+                out.writeUTF(s);
+            }
+            out.writeUTF("-------------------------");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    //очиста истории от сообщений из черного списка - не успел доделать, выдает ошибку в стр 138-139 и не хочет логинить новых пользователей!
+//    public void cleanHistory(){
+//        for (String nickBlack:
+//             blackList) {
+//            for (String s:
+//                 history) {
+//                if(s.contains(nickBlack))
+//                    history.remove(s);
+//            }
+//        }
+//    }
 
     public String getNick() {
         return nick;

@@ -1,10 +1,13 @@
-package server;
+package Server;
 
 import com.sun.xml.internal.ws.server.ServerRtException;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class AuthService {
     private static Connection connection;
@@ -64,7 +67,7 @@ public class AuthService {
         stmt.execute(sql3);
     }
 
-    //получение своего черного списка при авторизации клиента
+//получение своего черного списка при авторизации клиента
     public static ArrayList<String> blackListFromDB(ClientsHandler user) throws SQLException {
         ArrayList<String> blackList = new ArrayList<>();
         ArrayList<Integer> blackID = new ArrayList<>();
@@ -97,6 +100,31 @@ public class AuthService {
             }
         }
         return blackList;
+    }
+//сохранение всех подряд сообщений в базу
+    public static void saveMsg(LocalDateTime data, String nick, String msg) throws SQLException {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedDateTime = data.format(formatter);
+
+        String sqlW="INSERT INTO history (date, fromNick, msg) VALUES (?, ?, ?)";
+        PreparedStatement pstmt = connection.prepareStatement(sqlW);
+        pstmt.setString(1, formattedDateTime);
+        pstmt.setString(2, nick);
+        pstmt.setString(3, msg);
+        pstmt.executeUpdate();
+    }
+//получение истории сообщений из базы (передаем через TreeSet)
+    public static TreeSet<String> getHistory() throws SQLException {
+        TreeSet<String> history = new TreeSet<>();
+        String str;
+        String sqlS="SELECT date, fromNick, msg FROM history";
+        ResultSet rs = stmt.executeQuery(sqlS);
+        while(rs.next()){
+            str=(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
+            history.add(str);
+        }
+        return history;
     }
 
     public static void disconnect() {
